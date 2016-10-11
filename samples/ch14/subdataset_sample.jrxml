@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"  ?>
+<!-- Created with iReport - A designer for JasperReports -->
+<!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+<jasperReport
+		 name="subdataset_sample"
+		 columnCount="1"
+		 printOrder="Vertical"
+		 orientation="Portrait"
+		 pageWidth="595"
+		 pageHeight="842"
+		 columnWidth="535"
+		 columnSpacing="0"
+		 leftMargin="30"
+		 rightMargin="30"
+		 topMargin="20"
+		 bottomMargin="20"
+		 whenNoDataType="NoPages"
+		 isTitleNewPage="false"
+		 isSummaryNewPage="false">
+	<property name="ireport.scriptlethandling" value="0" />
+	<property name="ireport.encoding" value="UTF-8" />
+	<import value="java.util.*" />
+	<import value="net.sf.jasperreports.engine.*" />
+	<import value="net.sf.jasperreports.engine.data.*" />
+
+	<subDataset name="SubDataset1" >
+
+		<queryString><![CDATA[select SHIPCOUNTRY, COUNT(*) country_orders
+from ORDERS group by SHIPCOUNTRY]]></queryString>
+
+		<field name="SHIPCOUNTRY" class="java.lang.String"/>
+		<field name="COUNTRY_ORDERS" class="java.lang.Integer"/>
+
+	</subDataset>
+
+	<queryString><![CDATA[select count(*) as tot_orders from orders]]></queryString>
+
+	<field name="TOT_ORDERS" class="java.lang.Integer"/>
+
+		<background>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</background>
+		<title>
+			<band height="97"  isSplitAllowed="true" >
+				<staticText>
+					<reportElement
+						x="43"
+						y="17"
+						width="449"
+						height="64"
+						key="staticText-2"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="40"/>
+					</textElement>
+				<text><![CDATA[SubDataset sample]]></text>
+				</staticText>
+			</band>
+		</title>
+		<pageHeader>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</pageHeader>
+		<columnHeader>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</columnHeader>
+		<detail>
+			<band height="265"  isSplitAllowed="true" >
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="5"
+						y="23"
+						width="128"
+						height="18"
+						key="textField"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Integer"><![CDATA[$F{TOT_ORDERS}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="5"
+						y="0"
+						width="128"
+						height="18"
+						key="staticText-1"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font size="12"/>
+					</textElement>
+				<text><![CDATA[Total orders]]></text>
+				</staticText>
+				<pie3DChart>
+					<chart isShowLegend="false"  hyperlinkTarget="Self" >
+					<reportElement
+						x="139"
+						y="0"
+						width="396"
+						height="264"
+						key="element-1"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					</chart>
+					<pieDataset>
+						<dataset >
+							<datasetRun subDataset="SubDataset1">
+								<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+							</datasetRun>
+						</dataset>
+						<keyExpression><![CDATA[$F{SHIPCOUNTRY}]]></keyExpression>
+						<valueExpression><![CDATA[$F{COUNTRY_ORDERS}]]></valueExpression>
+						<labelExpression><![CDATA[$F{SHIPCOUNTRY}]]></labelExpression>
+				<sectionHyperlink >
+				</sectionHyperlink>
+					</pieDataset>
+					<pie3DPlot >
+						<plot />
+					</pie3DPlot>
+				</pie3DChart>
+			</band>
+		</detail>
+		<columnFooter>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</columnFooter>
+		<pageFooter>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</pageFooter>
+		<summary>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</summary>
+</jasperReport>

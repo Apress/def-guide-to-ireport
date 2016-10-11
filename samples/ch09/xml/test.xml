@@ -1,0 +1,25 @@
+<addressbook>
+   <category name="home">
+      <person id="1">
+          <lastname>Davolio</lastname>
+          <firstname>Nancy</firstname>
+      </person>
+      <person id="2">
+          <lastname>Fuller</lastname>
+          <firstname>Andrew</firstname>
+      </person>
+      <person id="3">
+          <lastname>Leverling</lastname>
+      </person>
+  </category>
+  <category name="work">
+      <person id="4">
+          <lastname>Peacock</lastname>
+          <firstname>Margaret</firstname>
+      </person>
+  </category>
+  <favorites>
+      <person id="1"/>
+      <person id="3"/>
+  </favorites>
+</addressbook>

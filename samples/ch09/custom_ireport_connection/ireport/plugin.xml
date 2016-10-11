@@ -1,0 +1,10 @@
+<iReportPlugin 	
+	name="My new connection"
+	class="MyIReportConnectionPlugin"
+	loadOnStartup="true"
+	hide = "true"
+	configurable = "false">
+	
+	<Description></Description>
+
+</iReportPlugin>
